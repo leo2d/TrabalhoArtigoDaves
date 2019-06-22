@@ -1,0 +1,22 @@
+
+ AreaDoUsuarioFragment areaDoUsuarioFragment = new AreaDoUsuarioFragment();
+// Aqui foi onde eu tentei pegar os dados para passar para a outra
+FragmentManager fragmentManager = getFragmentManager();
+FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+Bundle bundle = new Bundle();
+bundle.putString("token", token);
+bundle.putString("usuario", campologin.getText().toString());
+bundle.putInt("usuarioId", c.getId());
+
+areaDoUsuarioFragment.setArguments(bundle);
+fragmentTransaction.replace(R.id.frameContainer,areaDoUsuarioFragment);
+fragmentTransaction.commit();
+
+
+################################################################################
+
+LoginFragment loginFragment = new LoginFragment();
+FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+fragmentTransaction.replace(R.id.frameContainer, loginFragment);
+fragmentTransaction.commit();
