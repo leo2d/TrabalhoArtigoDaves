@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import daniellopes.treinamento.trabalhoartigodaves.R;
 
@@ -27,6 +28,13 @@ public class DetalheEventofragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    private TextView nomeEvento, descricaoEvento;
+    private TextView dataInicio, dataFim;
+    private TextView dataInicioSubmissao, dataFimSubmissao;
+    private TextView statusEvento;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +73,11 @@ public class DetalheEventofragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalhe_eventofragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_detalhe_eventofragment, container, false);
+
+        bind(view);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +117,15 @@ public class DetalheEventofragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void bind(View view) {
+        this.nomeEvento = view.findViewById(R.id.nomeEvento);
+        this.descricaoEvento = view.findViewById(R.id.descricaoEvento);
+        this.statusEvento = view.findViewById(R.id.statusEvento);
+        this.dataInicio = view.findViewById(R.id.dataInicioEvento);
+        this.dataFim = view.findViewById(R.id.dataFimEvento);
+        this.dataInicioSubmissao = view.findViewById(R.id.dataInicioSubmissao);
+        this.dataFimSubmissao = view.findViewById(R.id.dataFimSubmissa);
     }
 }

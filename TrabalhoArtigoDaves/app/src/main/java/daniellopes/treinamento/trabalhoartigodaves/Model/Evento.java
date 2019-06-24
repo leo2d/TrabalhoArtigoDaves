@@ -2,7 +2,7 @@ package daniellopes.treinamento.trabalhoartigodaves.Model;
 
 import java.io.Serializable;
 
-public class Eventos implements Serializable {
+public class Evento implements Serializable {
 
     private int id;
     private String nome;
@@ -17,10 +17,13 @@ public class Eventos implements Serializable {
     private int artigosNaoAvaliados;
     private String status;
 
-    public Eventos() {
+    public Evento() {
     }
 
-    public Eventos(int id, String nome, String descricao, String dataInicioEvento, String dataFimEvento, String dataInicioSubmissao, String dataFimSubmissao, int artigosSubmetidos, int artigosAprovados, int artigosReprovados, int artigosNaoAvaliados, String status) {
+    public Evento(int id, String nome, String descricao, String dataInicioEvento,
+                  String dataFimEvento, String dataInicioSubmissao, String dataFimSubmissao,
+                  int artigosSubmetidos, int artigosAprovados, int artigosReprovados,
+                  int artigosNaoAvaliados, String status) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

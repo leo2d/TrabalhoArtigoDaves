@@ -9,15 +9,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import daniellopes.treinamento.trabalhoartigodaves.Model.Eventos;
+import daniellopes.treinamento.trabalhoartigodaves.Model.Evento;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 
 public class AdapterEventos extends BaseAdapter {
 
-    private List<Eventos> eventos;
+    private List<Evento> eventos;
     private Context context;
 
-    public AdapterEventos(List<Eventos> eventos, Context context){
+    public AdapterEventos(List<Evento> eventos, Context context){
         this.eventos = eventos;
         this.context = context;
     }
@@ -44,7 +44,7 @@ public class AdapterEventos extends BaseAdapter {
                 .from(context)
                 .inflate(R.layout.linha_eventos, viewGroup, false);
 
-        Eventos eventoSelecionado = eventos.get(position);
+        Evento eventoSelecionado = eventos.get(position);
 
         TextView nome = viewEventos.findViewById(R.id.txtNomeEvento);
         nome.setText(eventoSelecionado.getNome());

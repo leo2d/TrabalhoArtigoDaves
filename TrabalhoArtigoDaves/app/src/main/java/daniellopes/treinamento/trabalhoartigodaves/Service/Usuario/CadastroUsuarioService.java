@@ -1,4 +1,4 @@
-package daniellopes.treinamento.trabalhoartigodaves.Service;
+package daniellopes.treinamento.trabalhoartigodaves.Service.Usuario;
 
 import android.os.AsyncTask;
 

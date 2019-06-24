@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import daniellopes.treinamento.trabalhoartigodaves.R;
-import daniellopes.treinamento.trabalhoartigodaves.Service.CadastroUsuarioService;
+import daniellopes.treinamento.trabalhoartigodaves.Service.Usuario.CadastroUsuarioService;
 
 /**
  * A simple {@link Fragment} subclass.

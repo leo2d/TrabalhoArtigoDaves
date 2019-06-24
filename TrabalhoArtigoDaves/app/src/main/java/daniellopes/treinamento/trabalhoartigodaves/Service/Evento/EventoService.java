@@ -5,22 +5,25 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Type;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import daniellopes.treinamento.trabalhoartigodaves.Model.Evento;
 import daniellopes.treinamento.trabalhoartigodaves.Service.BaseServiceGET;
 import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
 
-public class EventosService extends BaseServiceGET {
+import android.os.AsyncTask;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
+public class EventoService /*{ //extends BaseServiceGET {
 
     private Gson json = new Gson();
     private final String route = "eventos";
@@ -30,7 +33,10 @@ public class EventosService extends BaseServiceGET {
         try {
             List<Evento> eventos = null;
 
-            String responseJson = super.doInBackground(TokenUtil.getToken(), route);
+            // AsyncTask result = super.execute(TokenUtil.getToken(), route);
+            String responseJson = new BaseServiceGET()
+                    .execute(TokenUtil.getToken(), route)
+                    .get();
 
             if (null != responseJson && !responseJson.isEmpty()) {
                 if (responseJson.toLowerCase().contains("erro")) {
@@ -55,7 +61,9 @@ public class EventosService extends BaseServiceGET {
             List<Evento> eventos = null;
 
             String newRoute = route + "/status/" + situacao;
-            String responseJson = super.doInBackground(TokenUtil.getToken(), newRoute);
+            String responseJson = new BaseServiceGET()
+                    .execute(TokenUtil.getToken(), newRoute)
+                    .get();
 
             if (null != responseJson && !responseJson.isEmpty()) {
                 if (responseJson.toLowerCase().contains("erro")) {
@@ -80,7 +88,9 @@ public class EventosService extends BaseServiceGET {
             Evento evento = null;
 
             String newRoute = route + "/" + id;
-            String responseJson = super.doInBackground(TokenUtil.getToken(), newRoute);
+            String responseJson = new BaseServiceGET()
+                    .execute(TokenUtil.getToken(), newRoute)
+                    .get();
 
             if (null != responseJson && !responseJson.isEmpty()) {
                 if (responseJson.toLowerCase().contains("erro")) {
@@ -100,8 +110,8 @@ public class EventosService extends BaseServiceGET {
         }
     }
 
-
-    /*extends AsyncTask<String,Void,String> {
+*/
+    extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... param) {
 
@@ -146,5 +156,5 @@ public class EventosService extends BaseServiceGET {
         }
 
 
-    } */
+    }
 }

@@ -4,17 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.LoginFragment" >
+    tools:context=".Fragments.LoginFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,14 +78,18 @@
 
             <Button
                 android:id="@+id/btnCadastre-se"
-                android:layout_width="105dp"
-                android:layout_height="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="77dp"
-                android:layout_marginLeft="77dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="92dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toStartOf="@+id/btnLogar"
+                android:layout_toLeftOf="@+id/btnLogar"
                 android:backgroundTint="@color/colorTextHome"
                 android:text="Cadastrar"
                 android:textColor="#FFFFFF" />
@@ -98,13 +97,13 @@
             <Button
                 android:id="@+id/btnLogar"
                 android:layout_width="105dp"
-                android:layout_height="80dp"
+                android:layout_height="75dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="90dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="93dp"
+                android:layout_marginEnd="73dp"
+                android:layout_marginRight="73dp"
                 android:backgroundTint="@color/colorTextHome"
                 android:text="Login"
                 android:textColor="#FFFFFF" />
