@@ -38,7 +38,8 @@
             android:textAlignment="textStart"
             android:textColor="@color/colorTextHome"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="RtlCompat" />
 
         <LinearLayout
             android:layout_width="match_parent"
