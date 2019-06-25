@@ -2,18 +2,6 @@ package daniellopes.treinamento.trabalhoartigodaves.Service.Evento;
 
 import android.os.AsyncTask;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.List;
-
-import daniellopes.treinamento.trabalhoartigodaves.Model.Evento;
-import daniellopes.treinamento.trabalhoartigodaves.Service.BaseServiceGET;
-import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
-
-import android.os.AsyncTask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,14 +11,13 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class EventoService extends AsyncTask<String, Void, String> {
-
+public class EventoServiceId extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... param) {
 
         URL url;
         try {
-            url = new URL("https://service.davesmartins.com.br/api/eventos");
+            url = new URL("https://service.davesmartins.com.br/api/eventos/1");
 
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -41,6 +28,7 @@ public class EventoService extends AsyncTask<String, Void, String> {
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("code", param[0]);
             urlConnection.setRequestProperty("X-Environment", "android");
+
             urlConnection.connect();
 
             String finalJson = "";
@@ -49,23 +37,24 @@ public class EventoService extends AsyncTask<String, Void, String> {
                 InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
                 BufferedReader reader = new BufferedReader(responseBodyReader);
                 StringBuffer buffer = new StringBuffer();
-                String line = "";
+                String line ="";
 
-                while ((line = reader.readLine()) != null) {
+                while ((line=reader.readLine())!=null){
                     buffer.append(line);
                 }
+
                 finalJson = buffer.toString();
             } else {
-                finalJson = urlConnection.getResponseCode() + " " +
+                finalJson = urlConnection.getResponseCode()+" "+
                         urlConnection.getResponseMessage();
             }
 
             return finalJson;
 
         } catch (MalformedURLException e) {
-            return "Erro1: " + e.getMessage();
+            return "Erro1: "+e.getMessage();
         } catch (IOException e) {
-            return "Erro2: " + e.getMessage();
+            return "Erro2: "+e.getMessage();
         }
     }
 }

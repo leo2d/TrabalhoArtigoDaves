@@ -4,6 +4,8 @@ package daniellopes.treinamento.trabalhoartigodaves.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +51,7 @@ public class EventosFragment extends Fragment {
 
         if (null == eventoService)
             eventoService = new EventoService();
-/*
+
         try {
             token = getArguments().getString("token");
             resp = new EventoService().execute(token).get();
@@ -58,20 +60,18 @@ public class EventosFragment extends Fragment {
             }.getType();
             eventos = json.fromJson(resp, listaType);
 
-       //    eventos = eventoService.BuscarTodosEventos();
-
         } catch (Exception e) {
             resp = e.getMessage();
         }
 
-*/
-        eventos = new ArrayList<>();
-        eventos.add(new Evento(1, "Feira de quarta", "Feira de legumes", "20/10/2019",
-                "20/11/2019", "25/10/2019", "10/11/2019",
-                15, 12, 3, 0, "Aberto"));
-        eventos.add(new Evento(2, "Feira de quarta", "Feira de ciencia", "20/10/2019",
-                "20/11/2019", "25/10/2019", "10/11/2019",
-                15, 12, 3, 0, "Aberto"));
+
+//        eventos = new ArrayList<>();
+//        eventos.add(new Evento(1, "Feira de quarta", "Feira de legumes", "20/10/2019",
+//                "20/11/2019", "25/10/2019", "10/11/2019",
+//                15, 12, 3, 0, "Aberto"));
+//        eventos.add(new Evento(2, "Feira de quarta", "Feira de ciencia", "20/10/2019",
+//                "20/11/2019", "25/10/2019", "10/11/2019",
+//                15, 12, 3, 0, "Aberto"));
 
 
         String[] vet = new String[eventos.size()];
@@ -86,16 +86,25 @@ public class EventosFragment extends Fragment {
         adapterEventos = new AdapterEventos(eventos, getActivity());
         listaDeEventos.setAdapter(adapterEventos);
 
-/*
+//--------------------------------------------------------------------------------------------------
+
         listaDeEventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent detalharVenda = new Intent(getApplicationContext(), DetalharVendaActivity.class);
-                detalharVenda.putExtra(CHAVE_VENDA, eventos.get(position));
-                startActivityForResult(detalharVenda, TELA_DETALHE_VENDA);
+
+                DetalheEventoFragment detalheEventoFragment = new DetalheEventoFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("token", token);
+                bundle.putSerializable("eventos", eventos.get(position));
+
+                detalheEventoFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.frameContainer, detalheEventoFragment);
+                fragmentTransaction.commit();
             }
         });
-*/
 
         return view;
     }

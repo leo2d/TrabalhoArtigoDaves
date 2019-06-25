@@ -35,7 +35,7 @@
             android:layout_margin="8dp"
             android:gravity="end"
             android:text="Eventos"
-            android:textAlignment="viewEnd"
+            android:textAlignment="viewStart"
             android:textColor="@color/colorTextHome"
             android:textSize="24sp"
             android:textStyle="bold" />

@@ -45,29 +45,31 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                /*
+
                 try {
 
                     resp = new LoginUsuarioService().execute(campologin.getText().toString(),
                             campoSenha.getText().toString()).get();
                     token = resp.substring(resp.indexOf("token") + 8, resp.indexOf("}") - 1);
 
-                    TokenUtil tokenUtil = new TokenUtil(token);
+//                    TokenUtil tokenUtil = new TokenUtil(token);
 
                 } catch (Exception e) {
                     resp = e.getMessage();
-                } */
+                }
 
-                token = "123";
-                Usuario c = new Usuario();
-                c.setId(1);
-                c.setEmail("");
-                c.setNome("jao");
-                c.setLogin("jao");
-                c.setMatricula("123");
-                c.setSenha("123");
+//                token = "123";
+//                Usuario c = new Usuario();
+//                c.setId(1);
+//                c.setEmail("");
+//                c.setNome("jao");
+//                c.setLogin("jao");
+//                c.setMatricula("123");
+//                c.setSenha("123");
+
+
                 if (token != null) {
-                //    Usuario c = new Gson().fromJson(resp.toString(), Usuario.class);
+                    Usuario c = new Gson().fromJson(resp.toString(), Usuario.class);
                     System.out.println(c);
 
                     AreaDoUsuarioFragment areaDoUsuarioFragment = new AreaDoUsuarioFragment();
