@@ -12,10 +12,10 @@ import daniellopes.treinamento.trabalhoartigodaves.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtigosEventoFragment extends Fragment {
+public class ArtigosFragment extends Fragment {
 
 
-    public ArtigosEventoFragment() {
+    public ArtigosFragment() {
         // Required empty public constructor
     }
 
@@ -24,15 +24,7 @@ public class ArtigosEventoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_artigos_evento, container, false);
-        bind(view);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_artigos, container, false);
     }
-
-    private void bind(View view) {
-
-    }
-
 
 }
