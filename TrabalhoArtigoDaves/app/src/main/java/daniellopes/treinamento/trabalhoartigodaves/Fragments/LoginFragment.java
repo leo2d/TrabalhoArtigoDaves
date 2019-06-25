@@ -52,7 +52,7 @@ public class LoginFragment extends Fragment {
                             campoSenha.getText().toString()).get();
                     token = resp.substring(resp.indexOf("token") + 8, resp.indexOf("}") - 1);
 
-//                    TokenUtil tokenUtil = new TokenUtil(token);
+                    TokenUtil tokenUtil = new TokenUtil(token);
 
                 } catch (Exception e) {
                     resp = e.getMessage();
@@ -83,7 +83,7 @@ public class LoginFragment extends Fragment {
                     bundle.putSerializable("usuarioId", c.getId());
 
                     areaDoUsuarioFragment.setArguments(bundle);
-                    fragmentTransaction.replace(R.id.frameContainer,areaDoUsuarioFragment);
+                    fragmentTransaction.replace(R.id.frameContainer, areaDoUsuarioFragment);
                     fragmentTransaction.commit();
 
                     Toast.makeText(getActivity(), "Login efetuado com Sucesso", Toast.LENGTH_LONG).show();

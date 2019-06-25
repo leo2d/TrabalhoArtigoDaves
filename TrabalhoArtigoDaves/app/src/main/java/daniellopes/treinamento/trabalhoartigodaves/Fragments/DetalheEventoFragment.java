@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import daniellopes.treinamento.trabalhoartigodaves.Model.Evento;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Evento.EventoServiceId;
+import daniellopes.treinamento.trabalhoartigodaves.Util.SituacaoEvento;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,17 +64,22 @@ public class DetalheEventoFragment extends Fragment {
 
         preencheCamposEvento();
 
+        gerenciarBotaoArtigos();
+
+        return view;
+    }
+
+    private void gerenciarBotaoArtigos() {
         btnArtigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ArtigosEventoFragment artigosEventoFragment = new ArtigosEventoFragment();
+                ArtigosFragment artigosEventoFragment = new ArtigosFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("token", token);
-                bundle.putSerializable("eventos", eventos);
+                bundle.putSerializable("idEvento", eventos.getId());
 
                 artigosEventoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.frameContainer, artigosEventoFragment);
@@ -81,31 +87,32 @@ public class DetalheEventoFragment extends Fragment {
 
             }
         });
-
-        return view;
     }
 
     private void preencheCamposEvento() {
         nome = eventos.getNome();
-        nomeEvento.setText(nome+"");
+        nomeEvento.setText(nome + "");
 
         descricao = eventos.getDescricao();
-        descricaoEvento.setText(descricao+"");
+        descricaoEvento.setText(descricao + "");
 
         dataI = eventos.getDataInicioEvento();
-        dataInicio.setText(dataI+"");
+        dataInicio.setText(dataI + "");
 
         dataF = eventos.getDataFimEvento();
-        dataFim.setText(dataF+"");
+        dataFim.setText(dataF + "");
 
         dataIniSub = eventos.getDataInicioSubmissao();
-        dataInicioSubmissao.setText(dataIniSub+"");
+        dataInicioSubmissao.setText(dataIniSub + "");
 
         dataFimSub = eventos.getDataFimSubmissao();
-        dataFimSubmissao.setText(dataFimSub+"");
+        dataFimSubmissao.setText(dataFimSub + "");
 
-        status = eventos.getStatus();
-        statusEvento.setText(status+"");
+
+        status = eventos.getStatus().toLowerCase()
+                .equals(SituacaoEvento.EmSubmissao.toLowerCase())
+                ? "Em Submissão" : eventos.getStatus();
+        statusEvento.setText(status);
     }
 
     private void bind(View view) {

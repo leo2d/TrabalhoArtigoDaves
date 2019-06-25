@@ -33,9 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:layout_margin="8dp"
-            android:gravity="end"
             android:text="Eventos"
-            android:textAlignment="viewStart"
+            android:gravity="start"
+            android:textAlignment="textStart"
             android:textColor="@color/colorTextHome"
             android:textSize="24sp"
             android:textStyle="bold" />

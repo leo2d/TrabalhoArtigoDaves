@@ -9,21 +9,21 @@ public class Artigo implements Serializable {
     private String resenha;
     private String texto;
     private int numeroAvaliacaoes;
-    private int mediaAvaliacaoes;
-    private String aprovado;
+    private double mediaAvaliacaoes;
+    private String status;
     private Autor autor;
 
     public Artigo() {
     }
 
-    public Artigo(int id, String nome, String resenha, String texto, int numeroAvaliacaoes, int mediaAvaliacaoes, String aprovado, Autor autor) {
+    public Artigo(int id, String nome, String resenha, String texto, int numeroAvaliacaoes, int mediaAvaliacaoes, String status, Autor autor) {
         this.id = id;
         this.nome = nome;
         this.resenha = resenha;
         this.texto = texto;
         this.numeroAvaliacaoes = numeroAvaliacaoes;
         this.mediaAvaliacaoes = mediaAvaliacaoes;
-        this.aprovado = aprovado;
+        this.status = status;
         this.autor = autor;
     }
 
@@ -67,20 +67,20 @@ public class Artigo implements Serializable {
         this.numeroAvaliacaoes = numeroAvaliacaoes;
     }
 
-    public int getMediaAvaliacaoes() {
+    public double getMediaAvaliacaoes() {
         return mediaAvaliacaoes;
     }
 
-    public void setMediaAvaliacaoes(int mediaAvaliacaoes) {
+    public void setMediaAvaliacaoes(double mediaAvaliacaoes) {
         this.mediaAvaliacaoes = mediaAvaliacaoes;
     }
 
-    public String getAprovado() {
-        return aprovado;
+    public String getStatus() {
+        return status;
     }
 
-    public void setAprovado(String aprovado) {
-        this.aprovado = aprovado;
+    public void setStatus(String aprovado) {
+        this.status = aprovado;
     }
 
     public Autor getAutor() {
