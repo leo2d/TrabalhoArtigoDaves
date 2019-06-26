@@ -75,16 +75,20 @@ public class DetalheEventoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ArtigosFragment artigosEventoFragment = new ArtigosFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+               try{
+                   ArtigosFragment artigosEventoFragment = new ArtigosFragment();
+                   FragmentManager fragmentManager = getFragmentManager();
+                   FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("evento", eventos);
+                   Bundle bundle = new Bundle();
+                   bundle.putSerializable("evento", eventos);
 
-                artigosEventoFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.frameContainer, artigosEventoFragment);
-                fragmentTransaction.commit();
+                   artigosEventoFragment.setArguments(bundle);
+                   fragmentTransaction.replace(R.id.frameContainer, artigosEventoFragment);
+                   fragmentTransaction.commit();
+               }catch (Exception ex){
+                   String asd = ex.getMessage();
+               }
 
             }
         });

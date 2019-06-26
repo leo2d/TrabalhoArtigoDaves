@@ -87,6 +87,10 @@ public class Artigo implements Serializable {
         return autor;
     }
 
+    public boolean artigoPertenceAusuarioLogado(int idusuarioLogado){
+        return idusuarioLogado == autor.getId();
+    }
+
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
