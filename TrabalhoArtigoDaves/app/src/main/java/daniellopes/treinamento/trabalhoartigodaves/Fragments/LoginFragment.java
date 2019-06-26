@@ -13,12 +13,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
+import daniellopes.treinamento.trabalhoartigodaves.Model.Artigo;
 import daniellopes.treinamento.trabalhoartigodaves.Model.Usuario;
+import daniellopes.treinamento.trabalhoartigodaves.Model.UsuarioLogin;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Usuario.LoginUsuarioService;
 import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
+import daniellopes.treinamento.trabalhoartigodaves.Util.UsuarioUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +49,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        drawerLocker =(DrawerLocker)getActivity();
+        drawerLocker = (DrawerLocker) getActivity();
 
         drawerLocker.setDrawerLocked(true);
 
@@ -61,7 +68,16 @@ public class LoginFragment extends Fragment {
                             campoSenha.getText().toString()).get();
                     token = resp.substring(resp.indexOf("token") + 8, resp.indexOf("}") - 1);
 
+                    Type type = new TypeToken<UsuarioLogin>() {
+                    }.getType();
+
+                    Gson gson = new Gson();
+
+                    UsuarioLogin result = gson.fromJson(resp, type);
+
+
                     TokenUtil tokenUtil = new TokenUtil(token);
+                    UsuarioUtils usuarioUtils = new UsuarioUtils(result);
 
                 } catch (Exception e) {
                     resp = e.getMessage();

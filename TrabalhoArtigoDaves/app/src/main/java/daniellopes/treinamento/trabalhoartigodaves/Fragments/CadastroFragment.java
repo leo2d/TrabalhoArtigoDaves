@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
+import daniellopes.treinamento.trabalhoartigodaves.Model.UsuarioCadastro;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Usuario.CadastroUsuarioService;
 
@@ -50,6 +53,15 @@ public class CadastroFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                UsuarioCadastro novoUsuario =
+                        new UsuarioCadastro(caEmail.getText().toString(),
+                                0,  caNome.getText().toString(),
+                                caSenha.getText().toString(),
+                                caLogin.getText().toString(),
+                                caMatricula.getText().toString());
+
+                String usuarioJson = new Gson().toJson(novoUsuario);
+
                 String email = caEmail.getText().toString();
                 String login = caLogin.getText().toString();
                 String matricula = caMatricula.getText().toString();
@@ -61,7 +73,8 @@ public class CadastroFragment extends Fragment {
                     if (!email.equals("") && !login.equals("") && !matricula.equals("") &&
                             !nome.equals("") && !senha.equals("")) {
 
-                        resp = new CadastroUsuarioService().execute(email, login, matricula, nome, senha).get();
+                        //resp = new CadastroUsuarioService().execute(email, login, matricula, nome, senha).get();
+                        resp = new CadastroUsuarioService().execute(usuarioJson).get();
                         LoginFragment loginFragment = new LoginFragment();
                         FragmentManager fragmentManager = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -14,6 +14,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import daniellopes.treinamento.trabalhoartigodaves.Model.Usuario;
+import daniellopes.treinamento.trabalhoartigodaves.Model.UsuarioCadastro;
 
 public class CadastroUsuarioService extends AsyncTask<String, Void, String> {
     @Override
@@ -31,8 +32,9 @@ public class CadastroUsuarioService extends AsyncTask<String, Void, String> {
             urlConnection.setRequestProperty("Accept", "application/json");
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("X-Environment", "android");
-            Usuario ul = new Usuario(param[0], 1, param[1], param[2], param[3], param[4]);
-            String user = new Gson().toJson(ul);
+            /*Usuario ul = new UsuarioCadastro(param[0], 1, param[1], param[2], param[3], param[4]);
+            String user = new Gson().toJson(ul);*/
+            String user = param[0];
 
             urlConnection.setDoOutput(true);
             urlConnection.getOutputStream().write(user.getBytes());
