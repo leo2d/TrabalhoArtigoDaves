@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import daniellopes.treinamento.trabalhoartigodaves.Model.Evento;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Evento.EventoServiceId;
@@ -124,7 +122,7 @@ public class DetalheEventoFragment extends Fragment {
         this.dataFim = view.findViewById(R.id.dataFimEvento);
         this.dataInicioSubmissao = view.findViewById(R.id.dataInicioSubmissao);
         this.dataFimSubmissao = view.findViewById(R.id.dataFimSubmissa);
-        this.btnArtigos = view.findViewById(R.id.artigosbtn);
+        this.btnArtigos = view.findViewById(R.id.btnAvaliacao);
     }
 
 }

@@ -3,9 +3,12 @@ package daniellopes.treinamento.trabalhoartigodaves.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -55,7 +58,30 @@ public class ArtigosFragment extends Fragment {
         preencherAdaper(artigos);
 
 
+        gerenciarArtigoSelecioando();
+
         return view;
+    }
+
+    private void gerenciarArtigoSelecioando() {
+
+        listaDeArtigos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                DetalheArtigoFragment detalheFragment = new DetalheArtigoFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("artigo", artigos.get(position));
+
+                detalheFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.frameContainer, detalheFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
     }
 
     private void preencherAdaper(List<Artigo> artigos) {
