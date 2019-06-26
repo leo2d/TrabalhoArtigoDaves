@@ -17,10 +17,12 @@ public class AdapterArtigos extends BaseAdapter {
 
     private List<Artigo> Artigos;
     private Context context;
+    private boolean eventoFEchado;
 
-    public AdapterArtigos(List<Artigo> Artigos, Context context) {
+    public AdapterArtigos(List<Artigo> Artigos, boolean eventoFechado, Context context) {
         this.Artigos = Artigos;
         this.context = context;
+        this.eventoFEchado = eventoFechado;
     }
 
     @Override
@@ -54,7 +56,7 @@ public class AdapterArtigos extends BaseAdapter {
         autor.setText(ArtigoSelecionado.getAutor().getNome());
 
         TextView media = viewArtigos.findViewById(R.id.linha_artigo_media);
-        media.setText(ArtigoSelecionado.getMediaAvaliacaoes() + "");
+        media.setText( eventoFEchado ? ArtigoSelecionado.getMediaAvaliacaoes() + "" : "--");
 
         return viewArtigos;
     }

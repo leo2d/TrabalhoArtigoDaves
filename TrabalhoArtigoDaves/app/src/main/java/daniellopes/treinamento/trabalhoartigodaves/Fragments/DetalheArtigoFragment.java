@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import daniellopes.treinamento.trabalhoartigodaves.Model.Artigo;
 import daniellopes.treinamento.trabalhoartigodaves.R;
+import daniellopes.treinamento.trabalhoartigodaves.Util.SituacaoEvento;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +31,7 @@ public class DetalheArtigoFragment extends Fragment {
     private int id;
 
     private Artigo artigo;
+    private String statusEvento;
 
     public DetalheArtigoFragment() {
         // Required empty public constructor
@@ -44,11 +46,23 @@ public class DetalheArtigoFragment extends Fragment {
         bind(view);
 
         artigo = (Artigo) getArguments().getSerializable("artigo");
+        statusEvento = (String) getArguments().getSerializable("statusEvento");
 
         preencherCamposArtigo();
+        gerenciarExibicaoBotatAvaliar(artigo, statusEvento);
         gerenciarBotaoAvaliar();
 
+
         return view;
+    }
+
+    private void gerenciarExibicaoBotatAvaliar(Artigo artigo, String statusEvento) {
+
+        boolean exibirBotao = SituacaoEvento.eventoAberto(statusEvento)
+                && artigo.getStatus().toLowerCase().equals("aprovado");
+
+        avaliarArtigo.setEnabled(exibirBotao);
+        avaliarArtigo.setVisibility(exibirBotao ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void preencherCamposArtigo() {
@@ -60,8 +74,10 @@ public class DetalheArtigoFragment extends Fragment {
         statusArtigo.setText(artigo.getStatus());
 
         textoArtigo.setText(artigo.getTexto());
-        numeroAvaliacoesArtigo.setText(artigo.getNumeroAvaliacaoes() +"");
-        mediaAvaliacaoesArtigo.setText(artigo.getMediaAvaliacaoes() + "");
+        numeroAvaliacoesArtigo.setText(SituacaoEvento.eventoFechado(statusEvento)
+                ? artigo.getNumeroAvaliacaoes() + "" : "--");
+        mediaAvaliacaoesArtigo.setText(SituacaoEvento.eventoFechado(statusEvento)
+                ? artigo.getMediaAvaliacaoes() + "" : "--");
 
     }
 

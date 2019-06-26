@@ -62,12 +62,15 @@ public class DetalheEventoFragment extends Fragment {
 
         preencheCamposEvento();
 
-        gerenciarBotaoArtigos();
+        gerenciarBotaoArtigos(eventos.getStatus());
 
         return view;
     }
 
-    private void gerenciarBotaoArtigos() {
+    private void gerenciarBotaoArtigos(String status) {
+
+        gerenciarExibicaoBotaoArtigos(status);
+
         btnArtigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +80,7 @@ public class DetalheEventoFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("idEvento", eventos.getId());
+                bundle.putSerializable("evento", eventos);
 
                 artigosEventoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.frameContainer, artigosEventoFragment);
@@ -85,6 +88,15 @@ public class DetalheEventoFragment extends Fragment {
 
             }
         });
+    }
+
+    private void gerenciarExibicaoBotaoArtigos(String status) {
+
+        boolean exibirBotao = SituacaoEvento.eventoAberto(status)
+                || SituacaoEvento.eventoFechado(status);
+
+        btnArtigos.setEnabled(exibirBotao);
+        btnArtigos.setVisibility(exibirBotao ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void preencheCamposEvento() {

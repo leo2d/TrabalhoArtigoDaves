@@ -2,6 +2,8 @@ package daniellopes.treinamento.trabalhoartigodaves.Model;
 
 import java.io.Serializable;
 
+import daniellopes.treinamento.trabalhoartigodaves.Util.SituacaoEvento;
+
 public class Evento implements Serializable {
 
     private int id;
@@ -132,5 +134,10 @@ public class Evento implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public boolean eventoFechado(){
+        return this.status.toLowerCase()
+                .equals(SituacaoEvento.Fechado.toLowerCase());
     }
 }

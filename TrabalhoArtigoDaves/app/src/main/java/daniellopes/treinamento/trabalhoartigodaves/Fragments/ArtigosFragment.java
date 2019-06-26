@@ -25,6 +25,7 @@ import daniellopes.treinamento.trabalhoartigodaves.Model.Evento;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Artigo.ArtigosPorEventoService;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Evento.EventoService;
+import daniellopes.treinamento.trabalhoartigodaves.Util.SituacaoEvento;
 import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
 
 /**
@@ -37,6 +38,7 @@ public class ArtigosFragment extends Fragment {
     private ListView listaDeArtigos;
     Gson json = new Gson();
     AdapterArtigos adapterArtigos;
+    Evento evento;
 
     public ArtigosFragment() {
         // Required empty public constructor
@@ -51,11 +53,11 @@ public class ArtigosFragment extends Fragment {
 
         bind(view);
 
-        int idEvento = (Integer) getArguments().getSerializable("idEvento");
+        evento = (Evento) getArguments().getSerializable("evento");
         token = TokenUtil.getToken();
 
-        artigos = buscarArtigos(idEvento);
-        preencherAdaper(artigos);
+        artigos = buscarArtigos(evento.getId());
+        preencherAdaper(artigos, SituacaoEvento.eventoFechado(evento.getStatus()));
 
 
         gerenciarArtigoSelecioando();
@@ -75,6 +77,7 @@ public class ArtigosFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("artigo", artigos.get(position));
+                bundle.putSerializable("statusEvento", evento.getStatus());
 
                 detalheFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.frameContainer, detalheFragment);
@@ -84,7 +87,7 @@ public class ArtigosFragment extends Fragment {
 
     }
 
-    private void preencherAdaper(List<Artigo> artigos) {
+    private void preencherAdaper(List<Artigo> artigos, boolean eventoFechado) {
         if (null != artigos) {
 
             String[] vet = new String[artigos.size()];
@@ -97,7 +100,7 @@ public class ArtigosFragment extends Fragment {
             }
 
             try {
-                adapterArtigos = new AdapterArtigos(artigos, getActivity());
+                adapterArtigos = new AdapterArtigos(artigos, eventoFechado, getActivity());
                 listaDeArtigos.setAdapter(adapterArtigos);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
