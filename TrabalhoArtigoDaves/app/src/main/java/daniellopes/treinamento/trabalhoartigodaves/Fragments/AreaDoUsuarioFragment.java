@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
 import daniellopes.treinamento.trabalhoartigodaves.R;
+import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +23,7 @@ public class AreaDoUsuarioFragment extends Fragment {
     private TextView usuarioLogado;
     private String token, login;
     private int id;
-    private Button btnEventos, btnArtigos, btnMeusArtigos;
+    private Button btnEventos, btnSair, btnMeusArtigos;
 
     public AreaDoUsuarioFragment() {
         // Required empty public constructor
@@ -41,11 +42,15 @@ public class AreaDoUsuarioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_area_do_usuario, container, false);
         bind(view);
 
-        token = getArguments().getString("token");
+/*        token = getArguments().getString("token");
         login = getArguments().getString("usuario");
         id = getArguments().getInt("usuarioId");
 
-        usuarioLogado.setText(login);
+        usuarioLogado.setText(login);*/
+
+        token = TokenUtil.getToken();
+
+
 
         btnEventos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,22 @@ public class AreaDoUsuarioFragment extends Fragment {
             }
         });
 
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LoginFragment loginFragment = new LoginFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                TokenUtil tokenUtil = new TokenUtil("");
+
+                fragmentTransaction.replace(R.id.frameContainer, loginFragment);
+                fragmentTransaction.commit();
+
+            }
+        });
+
         return view;
     }
 
@@ -72,6 +93,7 @@ public class AreaDoUsuarioFragment extends Fragment {
 
         usuarioLogado = view.findViewById(R.id.usuarioLogado);
         btnEventos = view.findViewById(R.id.btnEventos);
+        btnSair = view.findViewById(R.id.btnSair);
     }
 
 }

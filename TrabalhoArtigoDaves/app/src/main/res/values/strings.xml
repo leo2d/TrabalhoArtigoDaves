@@ -9,9 +9,10 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_login">Login</string>
-    <string name="menu_acessar">Acessar</string>
     <string name="menu_cadastro">Cadastro</string>
     <string name="menu_meus_artigos">Meus Artigos</string>
+    <string name="menu_eventos">Eventos</string>
+    <string name="menu_sair">Sair</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

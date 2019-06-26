@@ -19,8 +19,10 @@ import android.widget.TextView;
 
 import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
 import daniellopes.treinamento.trabalhoartigodaves.Fragments.AreaDoUsuarioFragment;
+import daniellopes.treinamento.trabalhoartigodaves.Fragments.EventosFragment;
 import daniellopes.treinamento.trabalhoartigodaves.Fragments.LoginFragment;
 import daniellopes.treinamento.trabalhoartigodaves.R;
+import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DrawerLocker {
@@ -92,14 +94,29 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frameContainer, homeFragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_login) {
+        } else if (id == R.id.nav_eventos) {
+
+
+            EventosFragment eventosFragment = new EventosFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("token", TokenUtil.getToken());
+            eventosFragment.setArguments(bundle);
+
+            fragmentTransaction.replace(R.id.frameContainer, eventosFragment);
+            fragmentTransaction.commit();
+
+        } else if (id == R.id.nav_artigo) {
+        } else if (id == R.id.nav_sair) {
+
+            TokenUtil tokenUtil = new TokenUtil("");
 
             LoginFragment loginFragment = new LoginFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameContainer, loginFragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_artigo) {
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

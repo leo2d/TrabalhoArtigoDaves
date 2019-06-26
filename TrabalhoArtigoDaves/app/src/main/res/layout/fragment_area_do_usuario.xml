@@ -44,11 +44,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="5dp"
-                android:text="Bem Vindo:"
+                android:text=""
                 android:textColor="@color/colorTextHome"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
+            <!--android:text="Bem Vindo(a)"-->
 
             <TextView
                 android:id="@+id/usuarioLogado"
@@ -56,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="-"
+                android:text=""
 
                 android:textAlignment="center"
                 android:textColor="#030303"
