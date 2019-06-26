@@ -17,13 +17,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 
+import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
+import daniellopes.treinamento.trabalhoartigodaves.Fragments.AreaDoUsuarioFragment;
 import daniellopes.treinamento.trabalhoartigodaves.Fragments.LoginFragment;
-import daniellopes.treinamento.trabalhoartigodaves.Fragments.PrincipalFragment;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+        implements NavigationView.OnNavigationItemSelectedListener, DrawerLocker {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        PrincipalFragment principalFragment = new PrincipalFragment();
+        LoginFragment loginFragment = new LoginFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameContainer, principalFragment);
+        fragmentTransaction.replace(R.id.frameContainer, loginFragment);
         fragmentTransaction.commit();
 
     }
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+      /*  if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
 
-            PrincipalFragment principalFragment = new PrincipalFragment();
+            AreaDoUsuarioFragment homeFragment = new AreaDoUsuarioFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frameContainer, principalFragment);
+            fragmentTransaction.replace(R.id.frameContainer, homeFragment);
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_login) {
@@ -99,11 +99,20 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frameContainer, loginFragment);
             fragmentTransaction.commit();
 
-
         } else if (id == R.id.nav_artigo) {
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public void setDrawerLocked(boolean enabled) {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (enabled) {
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        } else {
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }
     }
 }

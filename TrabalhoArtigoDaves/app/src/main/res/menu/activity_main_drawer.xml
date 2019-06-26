@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_artigo"
             android:icon="@drawable/ic_library_books_black_24dp"
-            android:title="@string/menu_artigos" />
+            android:title="@string/menu_meus_artigos" />
         <!--<item-->
             <!--android:id="@+id/nav_tools"-->
             <!--android:icon="@drawable/ic_menu_manage"-->

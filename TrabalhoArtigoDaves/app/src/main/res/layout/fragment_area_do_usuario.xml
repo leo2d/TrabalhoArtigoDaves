@@ -70,29 +70,15 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnArtigos"
-                android:layout_width="110dp"
-                android:layout_height="80dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="69dp"
-                android:layout_marginLeft="69dp"
-                android:layout_marginTop="36dp"
-                android:backgroundTint="@color/colorTextHome"
-                android:text="Artigos"
-                android:textColor="#FFFFFF" />
-
-            <Button
                 android:id="@+id/button4"
                 android:layout_width="110dp"
                 android:layout_height="80dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="72dp"
-                android:layout_marginRight="72dp"
+                android:layout_marginTop="169dp"
+                android:layout_marginEnd="224dp"
+                android:layout_marginRight="224dp"
                 android:backgroundTint="@color/colorTextHome"
                 android:text="Meus Artigos"
                 android:textColor="#FFFFFF" />
@@ -118,9 +104,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="69dp"
-                android:layout_marginLeft="69dp"
-                android:layout_marginTop="169dp"
+                android:layout_marginStart="160dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="40dp"
                 android:backgroundTint="@color/colorTextHome"
                 android:text="Eventos"
                 android:textColor="#FFFFFF" />

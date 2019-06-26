@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 
 /**
@@ -32,6 +33,11 @@ public class AreaDoUsuarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+ /*       DrawerLocker drawerLocker = (DrawerLocker) getActivity();
+
+        drawerLocker.setDrawerLocked(false);*/
+
         View view = inflater.inflate(R.layout.fragment_area_do_usuario, container, false);
         bind(view);
 
@@ -66,7 +72,6 @@ public class AreaDoUsuarioFragment extends Fragment {
 
         usuarioLogado = view.findViewById(R.id.usuarioLogado);
         btnEventos = view.findViewById(R.id.btnEventos);
-        btnArtigos = view.findViewById(R.id.btnArtigos);
     }
 
 }

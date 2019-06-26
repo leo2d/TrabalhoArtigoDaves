@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
 import daniellopes.treinamento.trabalhoartigodaves.Model.Usuario;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Usuario.LoginUsuarioService;
@@ -28,6 +29,9 @@ public class LoginFragment extends Fragment {
     private Button cadastrarse, logar;
     private String token, resp = "";
 
+    private DrawerLocker drawerLocker;
+
+
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -37,6 +41,11 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        drawerLocker =(DrawerLocker)getActivity();
+
+        drawerLocker.setDrawerLocked(true);
+
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         bind(view);
@@ -81,6 +90,8 @@ public class LoginFragment extends Fragment {
                     bundle.putSerializable("token", token);
                     bundle.putSerializable("usuario", campologin.getText().toString());
                     bundle.putSerializable("usuarioId", c.getId());
+
+                    drawerLocker.setDrawerLocked(false);
 
                     areaDoUsuarioFragment.setArguments(bundle);
                     fragmentTransaction.replace(R.id.frameContainer, areaDoUsuarioFragment);

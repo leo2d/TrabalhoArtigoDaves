@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import daniellopes.treinamento.trabalhoartigodaves.Contracts.DrawerLocker;
 import daniellopes.treinamento.trabalhoartigodaves.R;
 import daniellopes.treinamento.trabalhoartigodaves.Service.Usuario.CadastroUsuarioService;
 
@@ -24,6 +25,9 @@ public class CadastroFragment extends Fragment {
     private Button cadastrarUsuario;
     private String resp = "";
 
+    private DrawerLocker drawerLocker;
+
+
     public CadastroFragment() {
         // Required empty public constructor
     }
@@ -33,6 +37,11 @@ public class CadastroFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        drawerLocker =(DrawerLocker)getActivity();
+
+        drawerLocker.setDrawerLocked(true);
+
         View view = inflater.inflate(R.layout.fragment_cadastro, container, false);
         bind(view);
 
