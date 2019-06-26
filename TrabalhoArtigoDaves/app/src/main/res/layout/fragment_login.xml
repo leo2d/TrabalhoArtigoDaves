@@ -66,7 +66,7 @@
             android:background="@drawable/bg_edit_text"
             android:ems="10"
             android:hint="Senha"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:padding="10dp" />
 
         <Space
