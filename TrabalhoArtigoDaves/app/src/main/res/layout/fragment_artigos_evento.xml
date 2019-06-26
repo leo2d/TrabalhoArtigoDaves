@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ArtigosEventoFragment">
+    android:background="@drawable/fundo"
+    tools:context=".Fragments.ArtigosFragment">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,6 +41,20 @@
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_margin="8dp"
+                    android:gravity="start"
+                    android:text="Artigos"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorTextHome"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

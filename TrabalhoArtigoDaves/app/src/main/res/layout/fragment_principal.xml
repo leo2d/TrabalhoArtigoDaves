@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/fundo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.PrincipalFragment" >
@@ -38,8 +39,10 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="403dp"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_principal" />
+            android:layout_height="300dp"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_history" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

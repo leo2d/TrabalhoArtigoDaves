@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fundo"
     tools:context=".Fragments.AvaliacaoFragment" >
 
     <LinearLayout
@@ -33,7 +34,7 @@
                 android:layout_margin="8dp"
                 android:text="Avaliação de Artigo"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -50,7 +51,8 @@
                 android:layout_weight="1"
                 android:text="Nome do Artigo"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
         </LinearLayout>
 
         <LinearLayout
@@ -106,20 +108,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="82dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnConfirmarAvaliacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="110dp"
+                android:layout_height="80dp"
+                android:backgroundTint="@color/colorTextHome"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="145dp"
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="0dp"
-                android:text="Enviar" />
+                android:text="Enviar"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
