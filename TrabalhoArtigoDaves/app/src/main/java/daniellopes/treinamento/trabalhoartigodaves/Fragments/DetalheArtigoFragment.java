@@ -38,6 +38,7 @@ public class DetalheArtigoFragment extends Fragment {
 
     private Artigo artigo;
     private String statusEvento;
+    private boolean usuarioTemArtigoNoEvento;
 
     public DetalheArtigoFragment() {
         // Required empty public constructor
@@ -53,6 +54,7 @@ public class DetalheArtigoFragment extends Fragment {
 
         artigo = (Artigo) getArguments().getSerializable("artigo");
         statusEvento = (String) getArguments().getSerializable("statusEvento");
+        usuarioTemArtigoNoEvento = (boolean) getArguments().getSerializable("usuarioTemArtigoNoEvento");
 
         preencherCamposArtigo();
         gerenciarExibicaoBotatAvaliar(artigo, statusEvento);
@@ -67,19 +69,22 @@ public class DetalheArtigoFragment extends Fragment {
         boolean exibirBotao = SituacaoEvento.eventoAberto(statusEvento)
                 && artigo.getStatus().toLowerCase().equals("aprovado")
                 && !artigo.artigoPertenceAusuarioLogado(UsuarioUtils.getUsuarioLogado().getId())
-                && !verificarUsuarioAvaliouArtigo();
+                && !verificarUsuarioAvaliouArtigo()
+                & !usuarioTemArtigoNoEvento;
+
 
         avaliarArtigo.setEnabled(exibirBotao);
         avaliarArtigo.setVisibility(exibirBotao ? View.VISIBLE : View.INVISIBLE);
     }
 
+
     private boolean verificarUsuarioAvaliouArtigo() {
 
         List<Avaliacao> avaliacoesArtigo = buscarAvaliacoes(artigo.getId());
 
-        if(null != avaliacoesArtigo && (avaliacoesArtigo.size() > 0)){
-            for (Avaliacao ava : avaliacoesArtigo){
-                if(ava.getUser().getId() == UsuarioUtils.getUsuarioLogado().getId()){
+        if (null != avaliacoesArtigo && (avaliacoesArtigo.size() > 0)) {
+            for (Avaliacao ava : avaliacoesArtigo) {
+                if (ava.getUser().getId() == UsuarioUtils.getUsuarioLogado().getId()) {
                     return true;
                 }
             }

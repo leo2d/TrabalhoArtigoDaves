@@ -98,7 +98,7 @@ public class LoginFragment extends Fragment {
                     System.out.println(c);
 
                     AreaDoUsuarioFragment areaDoUsuarioFragment = new AreaDoUsuarioFragment();
-                    // Aqui foi onde eu tentei pegar os dados para passar para a outra
+
                     FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

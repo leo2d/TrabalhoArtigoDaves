@@ -27,6 +27,7 @@ import daniellopes.treinamento.trabalhoartigodaves.Service.Artigo.ArtigosPorEven
 import daniellopes.treinamento.trabalhoartigodaves.Service.Evento.EventoService;
 import daniellopes.treinamento.trabalhoartigodaves.Util.SituacaoEvento;
 import daniellopes.treinamento.trabalhoartigodaves.Util.TokenUtil;
+import daniellopes.treinamento.trabalhoartigodaves.Util.UsuarioUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +40,7 @@ public class ArtigosFragment extends Fragment {
     Gson json = new Gson();
     AdapterArtigos adapterArtigos;
     Evento evento;
+    boolean usuarioTemArtigoNoEvento;
 
     public ArtigosFragment() {
         // Required empty public constructor
@@ -59,10 +61,22 @@ public class ArtigosFragment extends Fragment {
         artigos = buscarArtigos(evento.getId());
         preencherAdaper(artigos, SituacaoEvento.eventoFechado(evento.getStatus()));
 
+        usuarioTemArtigoNoEvento = verificarUsuarioTemArtigoNoEvento(artigos);
 
         gerenciarArtigoSelecioando();
 
         return view;
+    }
+
+    private boolean verificarUsuarioTemArtigoNoEvento(List<Artigo> artigos) {
+
+        for (Artigo art : artigos) {
+            if (art.artigoPertenceAusuarioLogado(UsuarioUtils.getUsuarioLogado().getId())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void gerenciarArtigoSelecioando() {
@@ -71,6 +85,7 @@ public class ArtigosFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
                 DetalheArtigoFragment detalheFragment = new DetalheArtigoFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -78,6 +93,7 @@ public class ArtigosFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("artigo", artigos.get(position));
                 bundle.putSerializable("statusEvento", evento.getStatus());
+                bundle.putSerializable("usuarioTemArtigoNoEvento", usuarioTemArtigoNoEvento);
 
                 detalheFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.frameContainer, detalheFragment);
